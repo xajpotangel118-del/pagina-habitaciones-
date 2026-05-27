@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Departamento de Habitaciones - Chimaltenango</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         /* Estilos Globales - Paleta Ultra Premium Oscura */
         :root {
@@ -198,6 +199,7 @@
             border: 1px solid var(--gris-borde);
             overflow: hidden;
             position: relative;
+            cursor: pointer;
             transition: transform 0.3s, border-color 0.3s;
         }
 
@@ -497,23 +499,72 @@
             gap: 10px;
         }
 
-        .location-details span {
+        .location-details i {
             color: var(--oro);
+            font-size: 14px;
+            width: 20px;
+            text-align: center;
         }
 
-        /* Mapa estilizado oscuro usando Filter de CSS */
+        /* Mapa Estilizado Ultra-Premium Solucionado */
         .map-container {
             width: 100%;
             height: 350px;
             border: 1px solid var(--gris-borde);
-            overflow: hidden;
+            background-image: url('https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=800&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
         }
 
-        .map-container iframe {
+        .map-overlay {
+            position: absolute;
             width: 100%;
             height: 100%;
-            border: none;
-            filter: grayscale(1) invert(0.92) contrast(1.2);
+            background-color: rgba(0, 0, 0, 0.65);
+            z-index: 1;
+        }
+
+        .map-content {
+            position: relative;
+            text-align: center;
+            z-index: 2;
+        }
+
+        .map-content i {
+            font-size: 45px;
+            color: var(--oro-brillante);
+            margin-bottom: 20px;
+            display: block;
+            animation: bounce 2s infinite;
+        }
+
+        .btn-mapa {
+            color: var(--blanco);
+            text-decoration: none;
+            border: 1px solid var(--oro);
+            padding: 12px 25px;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            background: rgba(10, 10, 10, 0.9);
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .btn-mapa:hover {
+            background: var(--oro);
+            color: var(--blanco);
+            box-shadow: 0 0 15px rgba(148, 116, 73, 0.4);
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
         }
 
         /* --- FOOTER --- */
@@ -677,7 +728,7 @@
             </div>
 
             <div class="hospitality-card">
-                <div class="hospitality-icon">🛎</div>
+                <div class="hospitality-icon"><i class="fa-solid fa-bell"></i></div>
                 <h3>Hospitalidad que se siente</h3>
                 <p>Atención personalizada, desayuno incluido y amenidades premium para que te sientas como en casa.</p>
                 <a href="#reservar">Conoce Más ➔</a>
@@ -758,12 +809,18 @@
             <h2>Descubre Chimaltenango</h2>
             <p>Ubicados en el corazón del departamento, cerca de los principales atractivos culturales, naturales y gastronómicos de la región.</p>
             <div class="location-details">
-                <div><span>📍</span> 2a Calle 3-21, Zona 1 Chimaltenango, Guatemala</div>
-                <div><span>⏱</span> A 1 hora de la Ciudad de Guatemala</div>
+                <div><i class="fa-solid fa-location-dot"></i> 2a Calle 3-21, Zona 1 Chimaltenango, Guatemala</div>
+                <div><i class="fa-solid fa-clock"></i> A 1 hora de la Ciudad de Guatemala</div>
             </div>
         </div>
         <div class="map-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m13!1m4!1s0x85890e0600000001:0x15f3de4099cc99cf!2sChimaltenango!3m2!1d14.662222!2d-90.820833!5e0!3m2!1ses!2sgt!4v1710000000000!5m2!1ses!2sgt"></iframe>
+            <div class="map-overlay"></div>
+            <div class="map-content">
+                <i class="fa-solid fa-location-pin"></i>
+                <a href="https://maps.google.com/?q=2a+Calle+3-21+Zona+1+Chimaltenango+Guatemala" target="_blank" class="btn-mapa">
+                    Abrir Mapa de Ubicación ➔
+                </a>
+            </div>
         </div>
     </section>
 
@@ -788,8 +845,8 @@
             <div class="footer-col">
                 <h4>Contacto</h4>
                 <ul>
-                    <li><a href="tel:+50223333000">📞 +502 2333-3000</a></li>
-                    <li><a href="mailto:info@departamentohabitaciones.com">✉ info@habitacioneschimaltenango.com</a></li>
+                    <li><a href="tel:+50223333000"><i class="fa-solid fa-phone" style="font-size: 11px; color: var(--oro); margin-right: 5px;"></i> +502 2333-3000</a></li>
+                    <li><a href="mailto:info@habitacioneschimaltenango.com"><i class="fa-solid fa-envelope" style="font-size: 11px; color: var(--oro); margin-right: 5px;"></i> info@habitacioneschimaltenango.com</a></li>
                 </ul>
             </div>
         </div>
@@ -804,7 +861,7 @@
         window.onload = function() {
             const hoy = new Date();
             const mañana = new Date(hoy);
-            mañana.setDate(mañana.getDate() + 4); // Simulación de rango de días elegidos de la imagen
+            mañana.setDate(mañana.getDate() + 4); 
 
             document.getElementById('checkin').value = hoy.toISOString().split('T')[0];
             document.getElementById('checkout').value = mañana.toISOString().split('T')[0];
