@@ -304,6 +304,72 @@
             font-weight: 600;
         }
 
+        /* --- NUEVA SECCIÓN: NUESTRO EQUIPO --- */
+        .team-section {
+            padding: 80px 8%;
+            background-color: var(--negro-fondo);
+            border-top: 1px solid var(--gris-borde);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .team-card {
+            background-color: var(--negro-tarjeta);
+            border: 1px solid var(--gris-borde);
+            padding: 30px 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .team-card:hover {
+            border-color: var(--oro);
+            transform: translateY(-3px);
+        }
+
+        .team-icon-wrapper {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: rgba(148, 116, 73, 0.1);
+            border: 1px solid rgba(148, 116, 73, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--oro-brillante);
+            font-size: 22px;
+        }
+
+        .team-card h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+            color: var(--blanco);
+        }
+
+        .team-role {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--oro);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .team-desc {
+            color: var(--gris-texto);
+            font-size: 12.5px;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
         /* --- SECCIÓN CALENDARIO Y RESERVAS --- */
         .booking-section {
             padding: 80px 8%;
@@ -628,6 +694,7 @@
         </div>
         <ul class="nav-links">
             <li><a href="#" class="active">Habitaciones</a></li>
+            <li><a href="#equipo">Equipo</a></li>
             <li><a href="#reservar">Reservas</a></li>
             <li><a href="#ubicacion">Ubicación</a></li>
             <li><a href="#">Experiencias</a></li>
@@ -736,6 +803,62 @@
         </div>
     </main>
 
+    <section class="team-section" id="equipo">
+        <div class="section-header">
+            <div>
+                <h5 class="subtitle">PROFESIONALES A TU SERVICIO</h5>
+                <h2>Nuestro Equipo Excepcional</h2>
+            </div>
+            <div>
+                <p>Conoce a las mentes y manos expertas dedicadas a garantizar una estancia perfecta y un confort de categoría internacional.</p>
+            </div>
+        </div>
+
+        <div class="team-grid">
+            <div class="team-card">
+                <div class="team-icon-wrapper"><i class="fa-solid fa-user-tie"></i></div>
+                <h3>Ricardo Larios</h3>
+                <div class="team-role">Gerente General</div>
+                <p class="team-desc">A cargo de la dirección del departamento de habitaciones, asegurando los más altos estándares de calidad y excelencia operativa.</p>
+            </div>
+
+            <div class="team-card">
+                <div class="team-icon-wrapper"><i class="fa-solid fa-clipboard-check"></i></div>
+                <h3>Luis Coc</h3>
+                <div class="team-role">Supervisor</div>
+                <p class="team-desc">Responsable de coordinar y estar al tanto de todas las tareas operativas cotidianas para que todo funcione de manera impecable.</p>
+            </div>
+
+            <div class="team-card">
+                <div class="team-icon-wrapper"><i class="fa-solid fa-tray"></i></div>
+                <h3>Angel Capen</h3>
+                <div class="team-role">Servicio de Habitaciones</div>
+                <p class="team-desc">Dedicado por completo a atender de inmediato cada una de las solicitudes de nuestros huéspedes, garantizando confort a su servicio en todo momento.</p>
+            </div>
+
+            <div class="team-card">
+                <div class="team-icon-wrapper"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+                <h3>Heber Sotz</h3>
+                <div class="team-role">Personal de Mantenimiento</div>
+                <p class="team-desc">Encargado de preservar las sofisticadas instalaciones e infraestructura del complejo en óptimas condiciones de funcionamiento.</p>
+            </div>
+
+            <div class="team-card">
+                <div class="team-icon-wrapper"><i class="fa-solid fa-door-open"></i></div>
+                <h3>Julio Ticas</h3>
+                <div class="team-role">Botón Principal</div>
+                <p class="team-desc">Su función es brindar una cálida bienvenida, transportar de forma segura tu equipaje y facilitarte información útil para tu estancia.</p>
+            </div>
+
+            <div class="team-card">
+                <div class="team-icon-wrapper"><i class="fa-solid fa-sparkles"></i></div>
+                <h3>Horlando Orellana</h3>
+                <div class="team-role">Camarista</div>
+                <p class="team-desc">Encargado de mantener la estética, el orden, las habitaciones, los pasillos y las áreas de servicio con una limpieza impecable.</p>
+            </div>
+        </div>
+    </section>
+
     <section class="booking-section" id="reservar">
         <div class="booking-text">
             <h5 class="subtitle">RESERVA DIRECTA</h5>
@@ -830,6 +953,7 @@
                 <h4>Enlaces</h4>
                 <ul>
                     <li><a href="#">Habitaciones</a></li>
+                    <li><a href="#equipo">Equipo</a></li>
                     <li><a href="#reservar">Reservas</a></li>
                     <li><a href="#ubicacion">Ubicación</a></li>
                 </ul>
@@ -887,7 +1011,7 @@
                 return;
             }
 
-            alert(`✨ Solicitud Recibida (Simulación 5 Estrellas) ✨\n\nHabitación: ${tipo}\nCheck-in: ${entrada}\nCheck-out: ${salida}\n\nEstamos verificando la disponibilidad exacta en el sistema.`);
+            alert(`✨ Solicitud Recibida (Simulación 5 Estrellas) ✨\n\nHabitación: ${tipo}\nCheck-in: ${entrada}\nCheck-out: ${salida}\n\nEstamos verificar la disponibilidad exacta en el sistema.`);
         }
     </script>
 </body>
